@@ -515,7 +515,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="611.333333333333,2996.66666666667" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,106.666666666667" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="564.666666666667,2567.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
@@ -734,7 +734,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,124" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="527.333333333333,946" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
                                 <Sequence DisplayName="Sequence - End Process" sap:VirtualizedContainerService.HintSize="480.666666666667,800" sap2010:WorkflowViewState.IdRef="Sequence_37">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -742,7 +742,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Config(&quot;Status_TrackerShared&quot;).ToString]" DisplayName="Copy status tracker file to shared drive" sap:VirtualizedContainerService.HintSize="438.666666666667,162" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[Config(&quot;Status_Tracker_LocalFolder&quot;).ToString]">
+                                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Config(&quot;Status_TrackerShared&quot;).ToString]" DisplayName="Copy status tracker file to shared drive" sap:VirtualizedContainerService.HintSize="438.666666666667,162" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[Path.Combine(Environment.CurrentDirectory,Config(&quot;Status_Tracker_LocalFolder&quot;).ToString)]">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

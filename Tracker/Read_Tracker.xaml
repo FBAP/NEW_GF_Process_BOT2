@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>754,1632</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>771.333333333333,1447.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Read_Tracker_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -78,7 +78,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Read_Tracker" sap:VirtualizedContainerService.HintSize="764,1567.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Read_Tracker" sap:VirtualizedContainerService.HintSize="526,1382.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsTrackerExist" />
     </Sequence.Variables>
@@ -87,9 +87,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Read Tracker workflow Started" sap:VirtualizedContainerService.HintSize="722,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Read Tracker workflow Started&quot;]" />
-    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - Shared Tracker" Exists="[IsTrackerExist]" sap:VirtualizedContainerService.HintSize="722,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;Status_TrackerShared&quot;).ToString]" PathType="File" />
-    <If Condition="[IsTrackerExist]" DisplayName="If Tracker is not present" sap:VirtualizedContainerService.HintSize="722,418" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message: Read Tracker workflow Started" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Read Tracker workflow Started&quot;]" />
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - Shared Tracker" Exists="[IsTrackerExist]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;Status_TrackerShared&quot;).ToString]" PathType="File" />
+    <If Condition="[IsTrackerExist]" DisplayName="If Tracker is not present" sap:VirtualizedContainerService.HintSize="484,233.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -107,19 +107,19 @@
         </ui:LogMessage>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence - Tracker Exist (Else)" sap:VirtualizedContainerService.HintSize="476,254" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Sequence - Tracker Exist (Else)" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;Status_TrackerShared&quot;).ToString]" DisplayName="Copy Status Tracker from shared drive folder to Local folder" sap:VirtualizedContainerService.HintSize="434,162" sap2010:WorkflowViewState.IdRef="CopyFile_4" Overwrite="True" Path="[in_Config(&quot;StatusTracker_TemplateFile&quot;).ToString]" />
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;Status_TrackerShared&quot;).ToString]" DisplayName="Copy Status Tracker from shared drive folder to Local folder" sap:VirtualizedContainerService.HintSize="434,162" sap2010:WorkflowViewState.IdRef="CopyFile_4" Overwrite="True" Path="[Path.Combine(Environment.CurrentDirectory,in_Config(&quot;StatusTracker_TemplateFile&quot;).ToString)]" />
         </Sequence>
       </If.Else>
     </If>
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;Status_Tracker_LocalFolder&quot;).ToString]" DisplayName="Copy Status Tracker from shared drive to Local" sap:VirtualizedContainerService.HintSize="484,162" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[in_Config(&quot;Status_TrackerShared&quot;).ToString]" />
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;TempTracker&quot;).ToString]" DisplayName="Copy Temporary tracker from template folder to temp folder " sap:VirtualizedContainerService.HintSize="484,162" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[in_Config(&quot;Temp_TrackerTemplate&quot;).ToString]">
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Path.Combine(Environment.CurrentDirectory,in_Config(&quot;Status_Tracker_LocalFolder&quot;).ToString)]" DisplayName="Copy Status Tracker from shared drive to Local" sap:VirtualizedContainerService.HintSize="484,162" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[in_Config(&quot;Status_TrackerShared&quot;).ToString]" />
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Path.Combine(Environment.CurrentDirectory,in_Config(&quot;TempTracker&quot;).ToString)]" DisplayName="Copy Temporary tracker from template folder to temp folder " sap:VirtualizedContainerService.HintSize="484,162" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[Path.Combine(Environment.CurrentDirectory,in_Config(&quot;Temp_TrackerTemplate&quot;).ToString)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -127,8 +127,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CopyFile>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_StatusTracker]" DisplayName="Read Status Tracker" sap:VirtualizedContainerService.HintSize="484,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;SheetName&quot;).ToString]" WorkbookPath="[in_Config(&quot;Status_Tracker_LocalFolder&quot;).ToString]" />
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_TempTracker]" DisplayName="Read Teporary Tracker" sap:VirtualizedContainerService.HintSize="484,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_Config(&quot;SheetName&quot;).ToString]" WorkbookPath="[in_Config(&quot;TempTracker&quot;).ToString]" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_StatusTracker]" DisplayName="Read Status Tracker" sap:VirtualizedContainerService.HintSize="484,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;SheetName&quot;).ToString]" WorkbookPath="[Path.Combine(Environment.CurrentDirectory,in_Config(&quot;Status_Tracker_LocalFolder&quot;).ToString)]" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_TempTracker]" DisplayName="Read Teporary Tracker" sap:VirtualizedContainerService.HintSize="484,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_Config(&quot;SheetName&quot;).ToString]" WorkbookPath="[Path.Combine(Environment.CurrentDirectory,in_Config(&quot;TempTracker&quot;).ToString)]" />
     <ui:LogMessage DisplayName="Log Message: &quot;Read Tracker workflow Ended" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Read Tracker workflow Ended&quot;]" />
   </Sequence>
 </Activity>
