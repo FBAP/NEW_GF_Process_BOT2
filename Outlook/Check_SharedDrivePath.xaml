@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>694,458</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>771.333333333333,924</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Check_SharedDrivePath_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -76,18 +76,18 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking for the folder path exist or not&quot;]" />
-    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[IsFolderExist]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_FolderPath]" PathType="Folder" />
+    <ui:LogMessage DisplayName="Log Message - Checking for the folder path exist or not" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking for the folder path exist or not&quot;]" />
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - Folder Path" Exists="[IsFolderExist]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_FolderPath]" PathType="Folder" />
     <If Condition="[IsFolderExist=False]" DisplayName="Check File path exist" sap:VirtualizedContainerService.HintSize="484,502" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="376,307.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Sequence - Create Folder" sap:VirtualizedContainerService.HintSize="376,307.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Folder path not present. Creating  folder&quot;]" />
-          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_FolderPath]" />
+          <ui:LogMessage DisplayName="Log Message - Folder path not present Creating folder" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Folder path not present Creating folder&quot;]" />
+          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder - Folder Path" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_FolderPath]" />
         </Sequence>
       </If.Then>
     </If>

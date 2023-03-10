@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>729.333333333333,1206</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>771.333333333333,1206</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GF_EnterPONumber_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -71,7 +71,6 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="GF_EnterPONumber" sap:VirtualizedContainerService.HintSize="476,1141.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -122,13 +121,10 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3818725b-4bce-49ce-aa6f-bc8da6122662" InformativeScreenshot="ac5e8a50603d62d72550a37e6e2b93b4" Selector="&lt;html app='chrome.exe' title='GF AP PO Load Lines' /&gt;&lt;webctrl tag='BUTTON' aaname='Go' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3818725b-4bce-49ce-aa6f-bc8da6122662" InformativeScreenshot="ac5e8a50603d62d72550a37e6e2b93b4" Selector="&lt;html app='chrome.exe' title='GF AP PO Load Lines' /&gt;&lt;webctrl tag='BUTTON' aaname='Go' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>

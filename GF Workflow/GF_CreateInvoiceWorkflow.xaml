@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>729.333333333333,1888.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>771.333333333333,1888.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GF_CreateInvoiceWorkflow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -87,9 +87,6 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - GF_CreateInvoiceWorkflow Started" sap:VirtualizedContainerService.HintSize="476.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;GF_CreateInvoiceWorkflow Started&quot;]" />
     <Sequence sap2010:Annotation.AnnotationText="This Workflow is used to perform the required automations steps of Global Foundries Webpage." DisplayName="GF_CreateInvoiceWorkflow" sap:VirtualizedContainerService.HintSize="476.666666666667,1462.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="PO Number, extracted from flatfile" Default="351005051556" Name="strPONumber" />
-      </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
