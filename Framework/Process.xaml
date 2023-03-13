@@ -9,10 +9,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>729.333333333333,1081.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>770,1276</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="29">
+    <scg:List x:TypeArguments="x:String" Capacity="58">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -42,6 +42,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -77,14 +78,14 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="376,1016.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="376,1211.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsMultipleLine" />
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="MailMessages" />
-      <Variable x:TypeArguments="x:String" Name="FolderPath" />
+      <Variable x:TypeArguments="x:String" Name="SharedFolderPath" />
+      <Variable x:TypeArguments="x:String" Name="LocalFolderPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -112,41 +113,58 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[in_TransactionItem("Invoice Num").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign DisplayName="Invoice Folder Path" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - Local Folder Path" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[FolderPath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[LocalFolderPath]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("RootFolder").ToString,Date.Now.ToString("yyyy"),in_Config("GFFolder").ToString,Date.Now.ToString("MMMyyyy"),Date.Now.ToString("ddMMM"),in_Config("InvoiceFolder").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory,in_Config("LocalInvoiceFolder").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadEmailAttachment workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Outlook\DownloadEmailAttachment.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_MailMessage">[MailMessages]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[FolderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[LocalFolderPath]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("ExcpMsg_MailAttachMissing").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <If Condition="[in_TransactionItem(&quot;Order Category&quot;).ToString = in_Config(&quot;Services&quot;).ToString]" DisplayName="If - Invoice Type is Service" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MergePDFs workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="GF\MergePDFs.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[LocalFolderPath]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+      <If.Else>
+        <ui:LogMessage DisplayName="Log Message - Invoice is not Service" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;No Merge PDF as Invoice type is  not Service&quot;]" />
+      </If.Else>
+    </If>
+    <Assign DisplayName="Invoice Shared Folder Path" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[SharedFolderPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("RootFolder").ToString,Date.Now.ToString("yyyy"),in_Config("GFFolder").ToString,Date.Now.ToString("MMMyyyy"),Date.Now.ToString("ddMMM"),in_Config("InvoiceFolder").ToString)]</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Enter_LineItemInfo workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="GF\Enter_LineItemInfo.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsMultipleLIne">
-          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="IsMultipleLine" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataRow[]" x:Key="in_DuplicateDataRow">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataRow[]" ExpressionText="out_DuplicateDataRow" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FolderPath" />
-        </InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="in_AttachTab">
-          <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="io_AttachTab" />
-        </InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsMultipleLIne">[IsMultipleLine]</InArgument>
+        <InArgument x:TypeArguments="sd:DataRow[]" x:Key="in_DuplicateDataRow">[out_DuplicateDataRow]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[LocalFolderPath]</InArgument>
+        <InArgument x:TypeArguments="ui:Browser" x:Key="in_AttachTab">[io_AttachTab]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderPath">[SharedFolderPath]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

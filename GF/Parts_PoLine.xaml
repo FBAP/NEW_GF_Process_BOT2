@@ -6,11 +6,12 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_AttachTab" Type="InArgument(ui:Browser)" />
     <x:Property Name="in_FolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharedFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>771.333333333333,3316</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>770,3470</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Parts_PoLine_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -77,22 +78,23 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Parts_PoLine" sap:VirtualizedContainerService.HintSize="552,3251.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Parts_PoLine" sap:VirtualizedContainerService.HintSize="573.333333333333,3405.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Parts PO Line workflow Started" sap:VirtualizedContainerService.HintSize="510,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Parts PO Line workflow Started&quot;]" />
-    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_AttachTab]" BrowserType="Chrome" DisplayName="Attach Browser - PartsMultipleLineItems" sap:VirtualizedContainerService.HintSize="510,2890" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="4cec4f7d6e8b37bbbf8617462459b849">
+    <ui:LogMessage DisplayName="Log Message - Parts PO Line workflow Started" sap:VirtualizedContainerService.HintSize="531.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Parts PO Line workflow Started&quot;]" />
+    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_AttachTab]" BrowserType="Chrome" DisplayName="Attach Browser - PartsMultipleLineItems" sap:VirtualizedContainerService.HintSize="531.333333333333,3044" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="4cec4f7d6e8b37bbbf8617462459b849">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Service Contract Activities" sap:VirtualizedContainerService.HintSize="476,2744" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <Sequence DisplayName="Service Contract Activities" sap:VirtualizedContainerService.HintSize="497.333333333333,2898" sap2010:WorkflowViewState.IdRef="Sequence_23">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strLatestInvoice" />
               <Variable x:TypeArguments="x:Double" Name="doubleQuantity" />
@@ -104,7 +106,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - Selecting Required Line Items" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Selecting Parts Line Items&quot;]">
+            <ui:LogMessage DisplayName="Log Message - Selecting Required Line Items" sap:VirtualizedContainerService.HintSize="455.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Selecting Parts Line Items&quot;]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -112,7 +114,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click CheckBox" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click CheckBox" sap:VirtualizedContainerService.HintSize="455.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -131,7 +133,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Add Selected Items Button" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Add Selected Items Button" sap:VirtualizedContainerService.HintSize="455.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -150,19 +152,19 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_AttachTab]" BrowserType="Chrome" DisplayName="Attach Browser - Submit Page" sap:VirtualizedContainerService.HintSize="434,2225.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="088205cae62d5c7e5fc980efdfa21823">
+            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_AttachTab]" BrowserType="Chrome" DisplayName="Attach Browser - Submit Page" sap:VirtualizedContainerService.HintSize="455.333333333333,2379.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="088205cae62d5c7e5fc980efdfa21823">
               <ui:BrowserScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do -  Submit Page" sap:VirtualizedContainerService.HintSize="376,2079.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <Sequence DisplayName="Do -  Submit Page" sap:VirtualizedContainerService.HintSize="421.333333333333,2233.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_22">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Supplier Invoice Number" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[in_TransactionItem(&quot;Invoice Num&quot;).ToString]">
+                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Supplier Invoice Number" sap:VirtualizedContainerService.HintSize="379.333333333333,156" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[in_TransactionItem(&quot;Invoice Num&quot;).ToString]">
                       <ui:SetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="149f562b-eaa4-4c8a-a5c6-6195d2d195e7" InformativeScreenshot="5e3fb9b6f5b65c26c98beebb311e11e2" Selector="&lt;webctrl tableRow='*' tag='INPUT' name='_Hdr_InvoiceNumber*' /&gt;" WaitForReady="INTERACTIVE">
                           <ui:Target.TimeoutMS>
@@ -171,7 +173,7 @@
                         </ui:Target>
                       </ui:SetValue.Target>
                     </ui:SetValue>
-                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Supplier Invoice Date" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[in_TransactionItem(&quot;Invoice Date (dd/mm/yyyy)&quot;).ToString]">
+                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Supplier Invoice Date" sap:VirtualizedContainerService.HintSize="379.333333333333,156" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[in_TransactionItem(&quot;Invoice Date (dd/mm/yyyy)&quot;).ToString]">
                       <ui:SetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa480186-2aaa-4a84-8d3e-8b3ce9bf157d" InformativeScreenshot="d3f20c9b2e25a232918b972dea9fb554" Selector="&lt;webctrl tag='INPUT' name='_Hdr_InvoiceDateMTI' /&gt;" WaitForReady="INTERACTIVE">
                           <ui:Target.TimeoutMS>
@@ -180,7 +182,7 @@
                         </ui:Target>
                       </ui:SetValue.Target>
                     </ui:SetValue>
-                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - TAX Amount" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="SetValue_3" Text="[in_TransactionItem(&quot;Tax Amount (SGD)&quot;).ToString]">
+                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - TAX Amount" sap:VirtualizedContainerService.HintSize="379.333333333333,156" sap2010:WorkflowViewState.IdRef="SetValue_3" Text="[in_TransactionItem(&quot;Tax Amount (SGD)&quot;).ToString]">
                       <ui:SetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="56738936-e0a5-41d2-a4bb-119354f86b05" InformativeScreenshot="46a3c1d991cd1610a97d35a4cc508e76" Selector="&lt;webctrl tag='INPUT' name='_Hdr_TaxAmountMTI' /&gt;" WaitForReady="INTERACTIVE">
                           <ui:Target.TimeoutMS>
@@ -189,7 +191,7 @@
                         </ui:Target>
                       </ui:SetValue.Target>
                     </ui:SetValue>
-                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Add Documents Button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Add Documents Button" sap:VirtualizedContainerService.HintSize="379.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                       <ui:Click.CursorPosition>
                         <ui:CursorPosition Position="Center">
                           <ui:CursorPosition.OffsetX>
@@ -208,7 +210,7 @@
                         </ui:Target>
                       </ui:Click.Target>
                     </ui:Click>
-                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Choose File Button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Choose File Button" sap:VirtualizedContainerService.HintSize="379.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
                       <ui:Click.CursorPosition>
                         <ui:CursorPosition Position="Center">
                           <ui:CursorPosition.OffsetX>
@@ -230,7 +232,7 @@
                         </ui:Target>
                       </ui:Click.Target>
                     </ui:Click>
-                    <Assign DisplayName="Assign - Latest Invoice" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_13">
+                    <Assign DisplayName="Assign - Latest Invoice" sap:VirtualizedContainerService.HintSize="379.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_13">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[strLatestInvoice]</OutArgument>
                       </Assign.To>
@@ -238,7 +240,7 @@
                         <InArgument x:TypeArguments="x:String">[Directory.GetFiles(in_FolderPath,"*.pdf").OrderByDescending(Function(a) new FileInfo(a).CreationTime).First]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - File Path" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="057d5e3387c43ff462a32fb06dbb0d64" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Open' aastate='sizeable, moveable, focusable' /&gt;">
+                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - File Path" sap:VirtualizedContainerService.HintSize="379.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="057d5e3387c43ff462a32fb06dbb0d64" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Open' aastate='sizeable, moveable, focusable' /&gt;">
                       <ui:WindowScope.Body>
                         <ActivityAction x:TypeArguments="x:Object">
                           <ActivityAction.Argument>
@@ -293,7 +295,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:WindowScope>
-                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Apply Button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Apply Button" sap:VirtualizedContainerService.HintSize="379.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                       <ui:Click.CursorPosition>
                         <ui:CursorPosition Position="Center">
                           <ui:CursorPosition.OffsetX>
@@ -312,7 +314,20 @@
                         </ui:Target>
                       </ui:Click.Target>
                     </ui:Click>
-                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - Invoice Quantity" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MoveInvoicesFromLocalFolderToSharedFolder workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="GF\MoveInvoicesFromLocalFolderToSharedFolder.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFile">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strLatestInvoice" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_SharedLocation">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SharedFolderPath" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                        </InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - Invoice Quantity" sap:VirtualizedContainerService.HintSize="379.333333333333,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
                       <ui:GetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="92e42d46-f383-41d0-a077-08abe26ce735" InformativeScreenshot="008b1aebb8bf5382100d92af2f537ade" Selector="&lt;html app='chrome.exe' title='GF AP Create Invoice' /&gt;&lt;webctrl tableRow='2' tag='INPUT' type='text' aaname='Invoice Quantity' colName='Invoice Quantity' /&gt;" WaitForReady="INTERACTIVE">
                           <ui:Target.TimeoutMS>
@@ -407,6 +422,12 @@
                   </Sequence>
                 </ActivityAction>
               </ui:BrowserScope.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:BrowserScope>
           </Sequence>
         </ActivityAction>
@@ -418,6 +439,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <ui:LogMessage DisplayName="Log Message - Parts PO Line workflow Ended" sap:VirtualizedContainerService.HintSize="510,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Parts PO Line workflow Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - Parts PO Line workflow Ended" sap:VirtualizedContainerService.HintSize="531.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Parts PO Line workflow Ended&quot;]" />
   </Sequence>
 </Activity>

@@ -238,27 +238,13 @@
                   <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_TransactionItem(&quot;PO Number&quot;),in_TransactionItem(&quot;Invoice Num&quot;),in_Config(&quot;Success&quot;).ToString}]" DataTable="[io_dt_TempTracker]" DisplayName="Add Data Row - 3" sap:VirtualizedContainerService.HintSize="431.333333333333,190" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Update_Trackers workflow" sap:VirtualizedContainerService.HintSize="431.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Tracker\Update_Trackers.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_StatusTracker">
-                        <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_StatusTracker" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_StatusTrackerPath">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Environment.CurrentDirectory,in_Config(&quot;Status_Tracker_LocalFolder&quot;).ToString)" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_TempTrackerPath">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Environment.CurrentDirectory,in_Config(&quot;TempTracker&quot;).ToString)" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                        <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="sd:DataRow[]" x:Key="in_ArrDuplicateRows">
-                        <mva:VisualBasicValue x:TypeArguments="sd:DataRow[]" ExpressionText="ArrDuplicateRows" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TempTracker">
-                        <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_dt_TempTracker" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                        <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_StatusTracker">[in_dt_StatusTracker]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_StatusTrackerPath">[Path.Combine(Environment.CurrentDirectory,in_Config("Status_Tracker_LocalFolder").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_TempTrackerPath">[Path.Combine(Environment.CurrentDirectory,in_Config("TempTracker").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                      <InArgument x:TypeArguments="sd:DataRow[]" x:Key="in_ArrDuplicateRows">[ArrDuplicateRows]</InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TempTracker">[io_dt_TempTracker]</InArgument>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                   <ui:LogMessage DisplayName="Log Message (Success)" sap:VirtualizedContainerService.HintSize="431.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[in_Config(&quot;LogMessage_Success&quot;).ToString]" />
@@ -364,7 +350,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">330,650.666666666666 330,680.666666666666 210,680.666666666666 210,715.6</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="200,181.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="630.666666666667,1720" sap2010:WorkflowViewState.IdRef="Sequence_14">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -528,7 +514,7 @@
                   <av:Size x:Key="ShapeSize">200,164.666666666667</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="630.666666666667,2477.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="200,164.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="QueueRetry" />
                   <Variable x:TypeArguments="x:String" Name="ScreenshotPath" />
@@ -616,27 +602,13 @@
                       <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_TransactionItem(&quot;PO Number&quot;),in_TransactionItem(&quot;Invoice Num&quot;),in_Config(&quot;Fail&quot;).ToString}]" DataTable="[io_dt_TempTracker]" DisplayName="Add Data Row - 2" sap:VirtualizedContainerService.HintSize="510,190" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Update_Trackers workflow - 3" sap:VirtualizedContainerService.HintSize="510,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Tracker\Update_Trackers.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_StatusTracker">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_StatusTracker" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_StatusTrackerPath">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Environment.CurrentDirectory,in_Config(&quot;Status_Tracker_LocalFolder&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_TempTrackerPath">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Environment.CurrentDirectory,in_Config(&quot;TempTracker&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataRow[]" x:Key="in_ArrDuplicateRows">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataRow[]" ExpressionText="ArrDuplicateRows" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TempTracker">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_dt_TempTracker" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_StatusTracker">[in_dt_StatusTracker]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_StatusTrackerPath">[Path.Combine(Environment.CurrentDirectory,in_Config("Status_Tracker_LocalFolder").ToString)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_TempTrackerPath">[Path.Combine(Environment.CurrentDirectory,in_Config("TempTracker").ToString)]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataRow[]" x:Key="in_ArrDuplicateRows">[ArrDuplicateRows]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TempTracker">[io_dt_TempTracker]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <Assign DisplayName="Assign QueryRetry" sap:VirtualizedContainerService.HintSize="431.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_10">
